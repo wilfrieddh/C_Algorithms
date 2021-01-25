@@ -15,7 +15,7 @@ C_COMPILER_FLAGS = -O3 -std=$(C_STANDARD)
 endif
 
 ifeq ($(ENABLE_WARNINGS), 1)
-C_COMPILER_FLAGS += -Wall -Wextra -Wpedantic -Wformat -Wformat-overflow -Werror=vla
+C_COMPILER_FLAGS += -Wall -Wextra -Wpedantic
 endif
 
 ifeq ($(WARNINGS_AS_ERRORS), 1)
