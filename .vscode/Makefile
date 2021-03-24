@@ -10,7 +10,7 @@ EXECUTABLE_NAME ?= main
 
 ifeq ($(COMPILATION_MODE), Debug)
 C_COMPILER_FLAGS = -g -std=$(C_STANDARD)
-else ifeq ($(COMPILATION_MODE), Release)
+else
 C_COMPILER_FLAGS = -O3 -std=$(C_STANDARD)
 endif
 
