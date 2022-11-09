@@ -13,6 +13,8 @@
 /* DEFINES AND TYPES  */
 /**********************/
 
+typedef float value_type_t;
+#define NO_VALUE (value_type_t)(INFINITY)
 
 /**********************/
 /*     FUNCTIONS      */
