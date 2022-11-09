@@ -6,86 +6,102 @@
 int main(void)
 {
     list_t *list = createList();
+    assert(NULL != list);
 
     node_t *a = createNode(1.0f);
     node_t *b = createNode(2.0f);
     node_t *c = createNode(3.0f);
-
     assert(NULL != a);
     assert(NULL != b);
     assert(NULL != c);
+
     assert(NULL == a->next);
     assert(NULL == a->prev);
     assert(1.0f == *a->value);
+    assert(2.0f == *b->value);
+    assert(3.0f == *c->value);
 
     pushBack(list, a);
+    assert(list->front == a);
+    assert(list->back == a);
+    assert(list->front->next == NULL);
+    assert(list->front->prev == NULL);
+    assert(list->back->next == NULL);
+    assert(list->back->prev == NULL);
+    assert(1u == list->size);
+
     pushBack(list, b);
+    assert(list->front == a);
+    assert(list->back == b);
+    assert(list->front->next == b);
+    assert(list->front->prev == NULL);
+    assert(list->back->next == NULL);
+    assert(list->back->prev == a);
+    assert(2u == list->size);
+
     pushBack(list, c);
-
-    printList(list);
-
-    assert(a == list->front);
-    assert(NULL == list->front->prev);
-    assert(b == list->front->next);
-    assert(c == list->back);
-    assert(NULL == list->back->next);
+    assert(list->front == a);
+    assert(list->back == c);
+    assert(list->front->next == b);
+    assert(list->front->prev == NULL);
+    assert(list->back->next == NULL);
+    assert(list->back->prev == b);
+    assert(b->next == c);
+    assert(b->prev == a);
     assert(3u == list->size);
 
-    const value_type_t value_c = popBack(list);
-    const value_type_t value_b = popBack(list);
-    const value_type_t value_a = popBack(list);
-
     printList(list);
 
-    assert(1.0f == value_a);
-    assert(2.0f == value_b);
+    const value_type_t value_c = popBack(list);
     assert(3.0f == value_c);
-    assert(NULL == list->front);
-    assert(NULL == list->back);
+    assert(list->front == a);
+    assert(list->back == b);
+    assert(list->front->next == b);
+    assert(list->front->prev == NULL);
+    assert(list->back->next == NULL);
+    assert(list->back->prev == a);
+    assert(b->next == NULL);
+    assert(b->prev == a);
+    assert(2u == list->size);
+
+    const value_type_t value_b = popBack(list);
+    assert(2.0f == value_b);
+    assert(list->front == a);
+    assert(list->back == a);
+    assert(list->front->next == NULL);
+    assert(list->front->prev == NULL);
+    assert(list->back->next == NULL);
+    assert(list->back->prev == NULL);
+    assert(1u == list->size);
+
+    const value_type_t value_a = popBack(list);
+    assert(1.0f == value_a);
+    assert(list->front == NULL);
+    assert(list->back == NULL);
     assert(0u == list->size);
 
     node_t *d = createNode(4.0f);
     pushFront(list, d);
+    assert(list->front == d);
+    assert(list->back == d);
+    assert(1u == list->size);
+
     node_t *e = createNode(5.0f);
     pushFront(list, e);
-    popNode(list, 0);
-
+    assert(list->front == e);
+    assert(list->back == d);
+    assert(2u == list->size);
     printList(list);
 
-    assert(d == list->front);
-    assert(NULL == list->front->prev);
-    assert(d == list->back);
-    assert(NULL == list->back->next);
+    popNode(list, 0);
+    assert(list->front == d);
+    assert(list->back == d);
     assert(1u == list->size);
 
     (void)popFront(list);
-
-    printList(list);
-
     assert(NULL == list->front);
     assert(NULL == list->back);
     assert(0u == list->size);
-
-    node_t *f = createNode(6.0f);
-    node_t *g = createNode(7.0f);
-    node_t *h = createNode(8.0f);
-    node_t *i = createNode(9.0f);
-    pushBack(list, f);
-    pushBack(list, g);
-    pushFront(list, h);
-    assert(3u == list->size);
-    printList(list);
-
-    pushNode(list, i, 1);
-    assert(4u == list->size);
-    printList(list);
-
-    (void)popNode(list, 2);
-    assert(3u == list->size);
-    printList(list);
-
-    assert(h == list->front);
-    assert(g == list->back);
 
     // Clean-Up
     freeNode(a);
@@ -93,10 +109,6 @@ int main(void)
     freeNode(c);
     freeNode(d);
     freeNode(e);
-    freeNode(f);
-    freeNode(g);
-    freeNode(h);
-    freeNode(i);
     list = freeList(list);
     assert(NULL == list);
 

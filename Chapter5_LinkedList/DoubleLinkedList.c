@@ -3,22 +3,34 @@
 
 #include "DoubleLinkedList.h"
 
-node_t *createNode(value_type_t value)
-{
-}
-
-node_t *freeNode(node_t *node)
-{
-}
-
 list_t *createList(void)
 {
+    list_t *list = (list_t *)malloc(sizeof(list_t));
+
+    if (NULL == list)
+    {
+        return NULL;
+    }
+
+    list->front = NULL;
+    list->back = NULL;
+    list->size = 0u;
+
+    return list;
 }
 
 list_t *freeList(list_t *list)
 {
+    if (NULL == list)
+    {
+        return NULL;
+    }
+
+    free(list);
+
+    return NULL;
 }
 
-void printList(list_t *list)
+void printList(const list_t *const list)
 {
 }
