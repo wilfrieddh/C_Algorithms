@@ -27,14 +27,6 @@ value_type_t pop(queue_t *queue)
 {
 }
 
-value_type_t front(queue_t *queue)
-{
-}
-
-value_type_t back(queue_t *queue)
-{
-}
-
 void printQueue(queue_t *queue)
 {
 }
