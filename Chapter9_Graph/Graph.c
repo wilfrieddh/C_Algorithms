@@ -52,4 +52,8 @@ graph_t *freeGraph(graph_t *graph)
 
 void printGraph(const graph_t *const graph)
 {
+        if (NULL == graph)
+    {
+        return;
+    }
 }
