@@ -16,14 +16,27 @@
 typedef float value_type_t;
 #define NO_VALUE (value_type_t)(INFINITY)
 
+typedef struct node
+{
+    struct node *next;
+    struct node *prev;
+    value_type_t *value;
+} node_t;
+
 typedef struct list
 {
-
+    node_t *front;
+    node_t *back;
+    uint32_t size;
 } list_t;
 
 /**********************/
 /*     FUNCTIONS      */
 /**********************/
+
+node_t *createNode(const value_type_t value);
+
+node_t *freeNode(node_t *node);
 
 list_t *createList(void);
 
