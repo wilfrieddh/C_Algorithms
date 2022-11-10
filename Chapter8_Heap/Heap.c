@@ -32,11 +32,6 @@ heap_t *createHeap(const uint32_t capacity)
 
 heap_t *freeHeap(heap_t *heap)
 {
-    if (NULL == heap)
-    {
-        return NULL;
-    }
-
     if (NULL != heap->data)
     {
         free(heap->data);

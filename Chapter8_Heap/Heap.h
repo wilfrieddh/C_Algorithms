@@ -18,8 +18,8 @@ typedef float value_type_t;
 
 typedef struct heap
 {
-    uint32_t capacity;
     uint32_t size;
+    uint32_t capacity;
     value_type_t *data;
 } heap_t;
 
