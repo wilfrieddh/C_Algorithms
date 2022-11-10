@@ -18,6 +18,11 @@ typedef float value_type_t;
 
 typedef struct queue
 {
+    uint32_t front_idx;
+    uint32_t back_idx;
+    uint32_t size;
+    uint32_t capacity;
+    value_type_t *data;
 } queue_t;
 
 /**********************/
