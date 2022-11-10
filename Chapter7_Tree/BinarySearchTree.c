@@ -13,6 +13,10 @@ node_t *createBST(const value_type_t value)
         return NULL;
     }
 
+    node->left = NULL;
+    node->right = NULL;
+    node->value = value;
+
     return node;
 }
 

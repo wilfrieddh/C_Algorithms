@@ -18,6 +18,9 @@ typedef float value_type_t;
 
 typedef struct node
 {
+    value_type_t value;
+    struct node *left;
+    struct node *right;
 } node_t;
 
 /**********************/
