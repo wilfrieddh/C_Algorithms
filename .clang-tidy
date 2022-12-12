@@ -1,9 +1,7 @@
 ---
-Checks:          'clang-diagnostic-*,clang-analyzer-*'
+Checks: 'clang-analyzer-*,bugprone-*'
 WarningsAsErrors: ''
 HeaderFilterRegex: ''
 AnalyzeTemporaryDtors: false
-FormatStyle:     Microsoft
-User:            jan
+FormatStyle:     none
 ...
-
